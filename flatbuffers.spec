@@ -4,7 +4,7 @@
 
 Name:		flatbuffers
 Version:	1.10.0
-Release:	1
+Release:	2
 Source0:	https://github.com/google/flatbuffers/archive/v%{version}.tar.gz
 Summary:	Memory efficient serialization library
 URL: 		http://google.github.io/flatbuffers/
@@ -28,6 +28,7 @@ Summary: Development files for %{name}
 Group: Development/C
 Requires: %{libname} = %{EVRD}
 Requires: %{name} = %{EVRD}
+Provides: %{name}-devel = %{EVRD}
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
