@@ -35,7 +35,7 @@ Development files (Headers etc.) for %{name}.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 %cmake -G Ninja \
 	-DFLATBUFFERS_BUILD_SHAREDLIB:BOOL=ON \
 	-DFLATBUFFERS_BUILD_STATICLIB:BOOL=OFF
