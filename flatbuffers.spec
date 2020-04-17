@@ -36,12 +36,22 @@ Development files (Headers etc.) for %{name}.
 %prep
 %setup -q
 %autopatch -p1
+
+
+# https://github.com/google/flatbuffers/issues/5769
+# Fixup CMake/FlatbuffersConfigVersion.cmake.in - Upstream releases tarballs
+# that make no sense. They exect git describe to find correct information about
+# the version in use - and replace that into the cmake file in the end. Obviously
+# the tarball has no .git directory and thus does not carry that inormation
+# We just inject %%version there. Easiest fix.
+sed -i 's/@VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@/%{version}/' CMake/FlatbuffersConfigVersion.cmake.in
+
+%build
 %cmake -G Ninja \
 	-DFLATBUFFERS_BUILD_SHAREDLIB:BOOL=ON \
 	-DFLATBUFFERS_BUILD_TESTS=OFF \
 	-DFLATBUFFERS_BUILD_STATICLIB:BOOL=OFF
 
-%build
 %ninja -C build
 
 %install
