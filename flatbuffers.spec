@@ -34,9 +34,7 @@ Provides: %{name}-devel = %{EVRD}
 Development files (Headers etc.) for %{name}.
 
 %prep
-%setup -q
-%autopatch -p1
-
+%autosetup -p1
 
 # https://github.com/google/flatbuffers/issues/5769
 # Fixup CMake/FlatbuffersConfigVersion.cmake.in - Upstream releases tarballs
@@ -46,13 +44,13 @@ Development files (Headers etc.) for %{name}.
 # We just inject %%version there. Easiest fix.
 sed -i 's/@VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@/%{version}/' CMake/FlatbuffersConfigVersion.cmake.in
 
-%build
 %cmake -G Ninja \
 	-DFLATBUFFERS_BUILD_SHAREDLIB:BOOL=ON \
 	-DFLATBUFFERS_BUILD_TESTS=OFF \
 	-DFLATBUFFERS_BUILD_STATICLIB:BOOL=OFF
 
-%ninja -C build
+%build
+%ninja_build -C build
 
 %install
 %ninja_install -C build
