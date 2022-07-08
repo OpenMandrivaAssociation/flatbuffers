@@ -1,9 +1,9 @@
-%define major 1
+%define major 2
 %define libname %mklibname flatbuffers %{major}
 %define devname %mklibname flatbuffers -d
 
 Name:		flatbuffers
-Version:	1.12.0
+Version:	2.0.6
 Release:	1
 Source0:	https://github.com/google/flatbuffers/archive/v%{version}.tar.gz
 Summary:	Memory efficient serialization library
@@ -67,3 +67,4 @@ rm -f %{buildroot}%{_libdir}/libflatbuffers.a
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/cmake/*
+%{_libdir}/*.pc
