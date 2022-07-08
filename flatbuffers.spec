@@ -67,4 +67,4 @@ rm -f %{buildroot}%{_libdir}/libflatbuffers.a
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/cmake/*
-%optional %{_libdir}/*.pc
+%{_libdir}/pkgconfig/*.pc
