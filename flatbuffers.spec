@@ -1,9 +1,9 @@
-%define major 2
-%define libname %mklibname flatbuffers %{major}
+%define major %(echo %{version}|cut -d. -f1)
+%define libname %mklibname flatbuffers
 %define devname %mklibname flatbuffers -d
 
 Name:		flatbuffers
-Version:	2.0.6
+Version:	22.11.22
 Release:	1
 Source0:	https://github.com/google/flatbuffers/archive/v%{version}.tar.gz
 Summary:	Memory efficient serialization library
@@ -42,7 +42,7 @@ Development files (Headers etc.) for %{name}.
 # the version in use - and replace that into the cmake file in the end. Obviously
 # the tarball has no .git directory and thus does not carry that inormation
 # We just inject %%version there. Easiest fix.
-sed -i 's/@VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@/%{version}/' CMake/FlatbuffersConfigVersion.cmake.in
+#sed -i 's/@VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@/%{version}/' CMake/FlatbuffersConfigVersion.cmake.in
 
 %cmake -G Ninja \
 	-DFLATBUFFERS_BUILD_SHAREDLIB:BOOL=ON \
