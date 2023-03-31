@@ -4,7 +4,7 @@
 
 Name:		flatbuffers
 Version:	23.3.3
-Release:	1
+Release:	2
 Source0:	https://github.com/google/flatbuffers/archive/v%{version}.tar.gz
 Summary:	Memory efficient serialization library
 URL: 		http://google.github.io/flatbuffers/
