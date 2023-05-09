@@ -3,8 +3,8 @@
 %define devname %mklibname flatbuffers -d
 
 Name:		flatbuffers
-Version:	23.3.3
-Release:	2
+Version:	23.5.9
+Release:	1
 Source0:	https://github.com/google/flatbuffers/archive/v%{version}.tar.gz
 Summary:	Memory efficient serialization library
 URL: 		http://google.github.io/flatbuffers/
