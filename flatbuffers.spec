@@ -7,7 +7,7 @@ Version:	24.3.25
 Release:	1
 Source0:	https://github.com/google/flatbuffers/archive/v%{version}.tar.gz
 Summary:	Memory efficient serialization library
-URL: 		http://google.github.io/flatbuffers/
+URL: 		https://google.github.io/flatbuffers/
 License:	Apache 2.0
 Group:		System/Libraries
 BuildRequires:	cmake ninja
