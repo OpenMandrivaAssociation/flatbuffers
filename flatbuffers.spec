@@ -3,11 +3,11 @@
 %define devname %mklibname flatbuffers -d
 
 Name:		flatbuffers
-Version:	24.12.23
+Version:	25.2.10
 Release:	1
 Source0:	https://github.com/google/flatbuffers/archive/v%{version}.tar.gz
 Summary:	Memory efficient serialization library
-URL: 		https://google.github.io/flatbuffers/
+URL: 		https://flatbuffers.dev/
 License:	Apache 2.0
 Group:		System/Libraries
 BuildRequires:	cmake ninja
