@@ -1,10 +1,11 @@
 %define major %(echo %{version}|cut -d. -f1)
 %define libname %mklibname flatbuffers
 %define devname %mklibname flatbuffers -d
+%define staticname %mklibname flatbuffers -d -s
 
 Name:		flatbuffers
 Version:	25.2.10
-Release:	1
+Release:	2
 Source0:	https://github.com/google/flatbuffers/archive/v%{version}.tar.gz
 Summary:	Memory efficient serialization library
 URL: 		https://flatbuffers.dev/
@@ -33,6 +34,14 @@ Provides: %{name}-devel = %{EVRD}
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
 
+%package -n %{staticname}
+Summary: Static library files for %{name}
+Group: Development/C
+Requires: %{devname} = %{EVRD}
+
+%description -n %{staticname}
+Static library files (Headers etc.) for %{name}.
+
 %prep
 %autosetup -p1
 
@@ -46,16 +55,13 @@ Development files (Headers etc.) for %{name}.
 
 %cmake -G Ninja \
 	-DFLATBUFFERS_BUILD_SHAREDLIB:BOOL=ON \
-	-DFLATBUFFERS_BUILD_TESTS=OFF \
-	-DFLATBUFFERS_BUILD_STATICLIB:BOOL=OFF
+	-DFLATBUFFERS_BUILD_TESTS=OFF
 
 %build
 %ninja_build -C build
 
 %install
 %ninja_install -C build
-# cmake flags for disabling static libs isn't respected
-rm -f %{buildroot}%{_libdir}/libflatbuffers.a
 
 %files
 %{_bindir}/flatc
@@ -68,3 +74,6 @@ rm -f %{buildroot}%{_libdir}/libflatbuffers.a
 %{_libdir}/*.so
 %{_libdir}/cmake/*
 %{_libdir}/pkgconfig/*.pc
+
+%files -n %{staticname}
+%{_libdir}/*.a
